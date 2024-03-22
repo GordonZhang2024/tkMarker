@@ -80,6 +80,9 @@ def convert(markdown: str):
         background: lightgrey;
      }
     </style>
+    <title>
+        Preview
+    </title>
 </html>
 '''\
     + html\
