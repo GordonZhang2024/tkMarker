@@ -13,6 +13,9 @@ def load_preview():
 
     webbrowser.open(preview_file)
 
+def open_file():
+    pass
+
 def save():
     global file_name
     if file_name == 'New File':
@@ -37,9 +40,9 @@ def new_file():
     text = scrolledtext.ScrolledText(editor)
     text.grid()
 
-    file.add_command(label='New File')
+    #file.add_command(label='New File')
     #file.add_command(label='Open...')
-    #file.add_command(label='Save', command=save)
+    file.add_command(label='Save', command=save)
 
     editor.config(menu=menubar)
     editor.mainloop()
