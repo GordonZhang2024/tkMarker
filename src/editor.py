@@ -1,3 +1,4 @@
+#!/use/bin/python3
 import tkinter
 import webbrowser
 import os
