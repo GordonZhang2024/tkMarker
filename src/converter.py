@@ -67,7 +67,11 @@ def convert(markdown: str):
                      .replace(')', '')
             image = f'<img src={src}/>'
             line = line.replace(img, image)
-        
+       
+        hr = line == '---'
+        if hr:
+            line = '<hr/>'
+
         line = line + '<br/>'
         html = html + line
     html = '''\

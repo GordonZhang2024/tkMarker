@@ -2,4 +2,12 @@
 
 A Markdown editor for Linux using **Tkinter**
 
-## Install
+## Installation
+This project requires **Pyinstaller**.Type command `pip install pyinstaller` to install it.
+
+###### Linux
+```bash
+$ ./build.sh
+$sudo ./install.sh
+```
+
