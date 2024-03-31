@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import re
 
-def convert(markdown: str):
+def convert(markdown: str, preview=False) -> str:
     '''
     function convert(): convert Markdown to HTML
     '''
@@ -74,7 +74,9 @@ def convert(markdown: str):
 
         line = line + '<br/>'
         html = html + line
-    html = '''\
+
+    if preview:
+        html = '''\
 <html>
     <style>
     p {
@@ -84,13 +86,30 @@ def convert(markdown: str):
         background: lightgrey;
      }
     </style>
-    <title>
-        Preview
-    </title>
 </html>
 '''\
-    + html\
-    + '</html>'
+        + html\
+        + '</html>'
+    else:
+         html = '''\
+<html>
+    <meta http-equiv="refresh" content="1">
+    <style>
+    p {
+        background: lightgrey;
+    }
+    q {
+        background: lightgrey;
+     }
+    </style>
+    <title>Preview</title>
+</html>
+'''\
+        + html\
+        + '</html>'
+
+    
+
     html = html.replace('<script>', '')\
                .replace('</script>', '')
     
@@ -101,3 +120,4 @@ def convert(markdown: str):
             html = html.replace(i, quoted_code)
 
     return html
+

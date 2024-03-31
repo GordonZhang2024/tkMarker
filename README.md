@@ -8,6 +8,6 @@ This project requires **Pyinstaller**.Type command `pip install pyinstaller` to 
 ###### Linux
 ```bash
 $ ./build.sh
-$sudo ./install.sh
+$ sudo ./install.sh
 ```
 

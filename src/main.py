@@ -10,7 +10,7 @@ from converter import convert
 def load_preview():
     markdown_text_for_preview = text.get('1.0', 'end')
     preview_file = f'{home}/.tkmarker_preview'
-    html = convert(markdown_text_for_preview)
+    html = convert(markdown_text_for_preview, preview=True)
     with open(preview_file, 'w') as p:
         p.write(html)
 
@@ -19,9 +19,16 @@ def load_preview():
 def refresh_preview(arg):
     markdown_text_for_preview = text.get('1.0', 'end')
     preview_file = f'{home}/.tkmarker_preview'
-    html = convert(markdown_text_for_preview)
+    html = convert(markdown_text_for_preview, preview=True)
     with open(preview_file, 'w') as p:
         p.write(html)
+
+def convert_to_html():
+    markdown_text = text.get('1.0', 'end')
+    output_file = filedialog.asksaveasfilename(filetypes=[('HTML', '*.html')])
+    html = convert(markdown_text)
+    with open(output_file, 'w') as o_file:
+        o_file.write(html)
 
 def show_popup_menu(event):
     edit.post(event.x_root,event.y_root)
@@ -42,6 +49,7 @@ def open_file():
         t = f.read()
     text.delete(1.0, tkinter.END)
     text.insert(tkinter.END, t)
+    editor.title(file_name)
 
 def save():
     global file_name
@@ -79,6 +87,7 @@ def new_file():
 
     file.add_command(label='Open...', command=open_file)
     file.add_command(label='Save', command=save)
+    file.add_command(label='Convert to HTML', command=convert_to_html)
 
     edit.add_command(label='Paste', command=paste)
     edit.add_command(label='Copy', command=copy)
@@ -86,8 +95,11 @@ def new_file():
     editor.config(menu=menubar)
     editor.bind('<Button-3>', show_popup_menu)
     editor.bind('<KeyRelease>', refresh_preview)
+    editor.bind('Control-C', copy)
+    editor.bind('Control-V', paste)
+    editor.bind('Control-S', save)
     editor.mainloop()
-    
+   
 if __name__ == '__main__':
     home = os.path.expanduser('~')
     file_name = 'New File'
