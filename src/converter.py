@@ -1,13 +1,23 @@
-#!/usr/bin/python
+#!/usr/bin/python3
+
+"""
+Module converter
+Convert Markdown to HTML
+"""
+
 import re
 
+
 def convert(markdown: str, preview=False) -> str:
-    '''
-    function convert(): convert Markdown to HTML
-    '''
+    """
+    Function convert()
+    Convert Markdown to HTML
+    """
+
     markdown = markdown.splitlines()
-    html = ''    
-    for index, line in enumerate(markdown):
+    html = ''
+    
+    for line in markdown:
         head = re.match(r'#+\s', line)
         if head:
             head = str(head.group(0))
@@ -67,7 +77,7 @@ def convert(markdown: str, preview=False) -> str:
                      .replace(')', '')
             image = f'<img src={src}/>'
             line = line.replace(img, image)
-       
+
         hr = line == '---'
         if hr:
             line = '<hr/>'
@@ -91,9 +101,8 @@ def convert(markdown: str, preview=False) -> str:
         + html\
         + '</html>'
     else:
-         html = '''\
+        html = '''\
 <html>
-    <meta http-equiv="refresh" content="1">
     <style>
     p {
         background: lightgrey;
@@ -108,11 +117,6 @@ def convert(markdown: str, preview=False) -> str:
         + html\
         + '</html>'
 
-    
-
-    html = html.replace('<script>', '')\
-               .replace('</script>', '')
-    
     quoted_code  = re.findall(r'```[\w\W]+?```', html)
     if quoted_code:
         for i in quoted_code:
@@ -120,4 +124,3 @@ def convert(markdown: str, preview=False) -> str:
             html = html.replace(i, quoted_code)
 
     return html
-
