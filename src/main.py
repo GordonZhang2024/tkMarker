@@ -12,7 +12,6 @@ from tkinter import filedialog, scrolledtext
 import uuid
 
 from converter import convert
-from gethelp import show_project_info
 
 global filetypes
 filetypes = [('Markdown', '*.md'), ("All Files", "*.*")]
