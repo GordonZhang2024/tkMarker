@@ -12,11 +12,13 @@ from tkinter import filedialog, scrolledtext
 import uuid
 
 from converter import convert
+from get_help import show_project_info
 
 global filetypes
 filetypes = [('Markdown', '*.md'), ("All Files", "*.*")]
 
 def load_preview():
+    #Load the preview
     markdown_text_for_preview = text.get('1.0', 'end') #Get the text
     preview_file = f'{home}/.tkmarker/{file_uuid}'
     html = convert(markdown_text_for_preview, preview=True)
@@ -89,7 +91,11 @@ def new_file():
     global edit
     edit = tkinter.Menu(menubar, tearoff=0)
     menubar.add_cascade(label='Edit', menu=edit)
-    
+
+    #Add the 'Help' menubar
+    help_menu = tkinter.Menu(editor, tearoff=0)
+    menubar.add_cascade(label='Help', menu=help_menu)
+
     #Add the 'Preview' button
     menubar.add_command(label='Preview', command=load_preview)
 
@@ -100,6 +106,7 @@ def new_file():
 
     file.add_command(label='Open...', command=open_file)
     file.add_command(label='Save', command=save)
+    file.add_separator()
     file.add_command(label='Convert to HTML', command=convert_to_html)
 
     edit.add_command(label='Paste', command=paste)
@@ -107,6 +114,8 @@ def new_file():
     edit.add_command(label='Cut', command=cut)
 
     editor.config(menu=menubar)
+
+    help_menu.add_command(label='About', command=show_project_info)
 
     #Add keyboard shortcuts
     editor.bind('<Button-3>', show_popup_menu)

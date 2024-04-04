@@ -7,7 +7,6 @@ Convert Markdown to HTML
 
 import re
 
-
 def convert(markdown: str, preview=False) -> str:
     """
     Function convert()
@@ -16,7 +15,7 @@ def convert(markdown: str, preview=False) -> str:
 
     markdown = markdown.splitlines()
     html = ''
-    
+
     for line in markdown:
         head = re.match(r'#+\s', line)
         if head:
