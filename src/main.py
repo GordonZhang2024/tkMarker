@@ -14,7 +14,7 @@ import uuid
 from converter import convert
 from get_help import show_project_info
 
-global filetypes
+#filetypes
 filetypes = [('Markdown', '*.md'), ("All Files", "*.*")]
 
 def load_preview():
