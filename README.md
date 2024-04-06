@@ -1,6 +1,8 @@
 # tkMarker
 
-A Markdown editor for Linux using **Tkinter**
+A Markdown editor using **Tkinter**
+
+![](screenshot.png)
 
 ## Installation
 ###### Linux
@@ -23,5 +25,7 @@ Type command:
 ```bash
 $ tkmarker
 ```
+You will see the editor.
 
 *Click the <keyboard>Preview</keyboard> Button, then the editor will open the preview in the web browser.
+
