@@ -1,8 +1,11 @@
 # tkMarker
 
 A Markdown editor using **Tkinter**
+- [x] Markdown preview
+- [ ] Auto refresh
+- [ ] Code highlight
 
-![](screenshot.png)
+![screenshot](https://github.com/GordonZhang2024/tkMarker/assets/159539185/84ef0269-eb94-4c37-9fbf-8ddf7406cd75)
 
 ## Installation
 ###### Linux
@@ -19,6 +22,8 @@ $ cd tkMarker
 $ ./build.sh
 $ sudo ./install.sh
 ```
+> [!IMPORTANT]
+> Please use Python >= 3.12
 
 ## Usage
 Type command:
