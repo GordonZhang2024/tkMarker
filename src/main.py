@@ -125,7 +125,7 @@ def new_file():
 
     #Refresh Automatically
     editor.bind('<KeyRelease>', refresh_preview)
-
+    
     editor.mainloop()
 
 if __name__ == '__main__':

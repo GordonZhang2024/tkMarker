@@ -7,16 +7,18 @@ Convert Markdown to HTML
 
 import re
 
-def convert(markdown: str, preview=False) -> str:
+def convert(markdown: str, preview=False, file_path='./') -> str:
     """
     Function convert()
     Convert Markdown to HTML
     """
+    global path
+    path = file_path
     markdown = markdown.splitlines()
     html = convert_str(markdown, preview=preview)
     return html
 
-def convert_str(markdown: list, preview=False, file_path='') -> str:
+def convert_str(markdown: list, preview=False, file_path='./') -> str:
     """
     Function convert_str()
     Convert Markdown to HTML
@@ -136,3 +138,5 @@ def convert_single_line(line: str) -> str:
     hr = line == '---'
     if hr:
         line = '<hr/>'
+
+    return line
