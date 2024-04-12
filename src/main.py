@@ -21,7 +21,7 @@ def load_preview():
     #Load the preview
     markdown_text_for_preview = text.get('1.0', 'end') #Get the text
     preview_file = f'{home}/.tkmarker/{file_uuid}'
-    html = convert(markdown_text_for_preview, preview=True, file_path=os.path.split(file_name)
+    html = convert(markdown_text_for_preview, preview=True, file_path=os.path.split(file_name))
     with open(preview_file, 'w+') as p:
         p.write(html)
 
@@ -31,7 +31,7 @@ def load_preview():
 def refresh_preview(arg):
     markdown_text_for_preview = text.get('1.0', 'end')
     preview_file = f'{home}/.tkmarker/{file_uuid}'
-    html = convert(markdown_text_for_preview, preview=True, file_path=os.path.split(file_name)
+    html = convert(markdown_text_for_preview, preview=True, file_path=os.path.split(file_name))
     with open(preview_file, 'w') as p:
         p.write(html)
 
