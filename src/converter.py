@@ -16,7 +16,7 @@ def convert(markdown: str, preview=False) -> str:
     html = convert_str(markdown, preview=preview)
     return html
 
-def convert_str(markdown: list, preview=False) -> str:
+def convert_str(markdown: list, preview=False, file_path='') -> str:
     """
     Function convert_str()
     Convert Markdown to HTML
@@ -130,7 +130,7 @@ def convert_single_line(line: str) -> str:
         src = img.replace('![]', '')\
                  .replace('(', '')\
                  .replace(')', '')
-        image = f'<img src={src}/>'
+        image = f'<img src={file_path}{src}/>'
         line = line.replace(img, image)
 
     hr = line == '---'
