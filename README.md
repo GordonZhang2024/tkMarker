@@ -29,6 +29,7 @@ $ sudo ./install.sh
 > [!IMPORTANT]
 > Please use Python >= 3.6
 
+
 ## Usage
 Type command:
 ```bash
