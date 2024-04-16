@@ -38,6 +38,3 @@ $ tkmarker
 You will see the editor.
 
 *Click the <keyboard>Preview</keyboard> Button, then the editor will open the preview in the web browser.*
-
-## Docs
-[tkMarker docs](https://gordonzhang.pythonanywhere.com/projects/tkMarker/)
