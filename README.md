@@ -10,8 +10,8 @@ A Markdown editor using **Tkinter**
 
 ## Installation
 ### Installing the dependencies
-This project requires **Pyinstaller** and **Tkinter**.
 ###### GNU/Linux
+This project requires **Pyinstaller** and **Tkinter**.
 To install them, type command:
 ```bash
 $ sudo dnf install python3-tkinter #On Fedora, CentOS, and Red Hat
