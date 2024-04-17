@@ -44,4 +44,6 @@ You will see the editor.
 [GPL-3.0 license](https://www.gnu.org/licenses/gpl-3.0.html)
 
 
-*This is a software with ABSOLUTELY NO WARRANTY.*
+
+*This is a software with **ABSOLUTELY NO WARRANTY**.
+Feel free to report an issue or create a pull request.*
