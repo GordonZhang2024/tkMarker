@@ -6,7 +6,7 @@ A Markdown editor using **Tkinter**
 - [ ] Auto refresh
 - [ ] Code highlight
 
-![](https://github.com/GordonZhang2024/tkMarker/assets/159539185/84ef0269-eb94-4c37-9fbf-8ddf7406cd75)
+![Pasted image](https://github.com/GordonZhang2024/tkMarker/assets/159539185/71b3aa10-13ff-4a52-b55a-87d84252094b)
 
 ## Installation
 ### Installing the dependencies
