@@ -6,7 +6,7 @@ A Markdown editor using **Tkinter**
 - [ ] Auto refresh
 - [ ] Code highlight
 
-![screenshot](https://github.com/GordonZhang2024/tkMarker/assets/159539185/84ef0269-eb94-4c37-9fbf-8ddf7406cd75)
+![](https://github.com/GordonZhang2024/tkMarker/assets/159539185/84ef0269-eb94-4c37-9fbf-8ddf7406cd75)
 
 ## Installation
 ### Installing the dependencies
@@ -27,7 +27,7 @@ $ ./build.sh
 $ sudo ./install.sh
 ```
 > [!IMPORTANT]
-> Please use Python >= 3.6
+> Please use Python >= 3.8
 
 
 ## Usage
@@ -47,3 +47,4 @@ You will see the editor.
 
 *This is a software with **ABSOLUTELY NO WARRANTY**.
 Feel free to report an issue or create a pull request.*
+
