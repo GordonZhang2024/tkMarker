@@ -13,7 +13,8 @@ A Markdown editor using **Tkinter**
 - [ ] Auto refresh
 - [ ] Code highlight
 
-[Download](https://github.com/GordonZhang2024/tkMarker/releases)
+![Static Badge](https://img.shields.io/badge/Download%20-%20tkMarker?style=for-the-badge&link=https%3A%2F%2Fgithub.com%2FGordonZhang2024%2FtkMarker%2Freleases)]
+
 
 ![Pasted image](https://github.com/GordonZhang2024/tkMarker/assets/159539185/71b3aa10-13ff-4a52-b55a-87d84252094b)
 
