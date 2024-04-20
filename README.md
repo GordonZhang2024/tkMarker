@@ -6,6 +6,12 @@ A Markdown editor using **Tkinter**
 - [ ] Auto refresh
 - [ ] Code highlight
 
+![GitHub forks](https://img.shields.io/github/forks/GordonZhang2024/tkMarker)
+![GitHub Repo stars](https://img.shields.io/github/stars/GordonZhang2024/tkMarker)
+![GitHub watchers](https://img.shields.io/github/watchers/GordonZhang2024/tkMarker)
+![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/GordonZhang2024/tkMarker/latest/total)
+
+
 ![Pasted image](https://github.com/GordonZhang2024/tkMarker/assets/159539185/71b3aa10-13ff-4a52-b55a-87d84252094b)
 
 ## Installation
