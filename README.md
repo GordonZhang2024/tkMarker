@@ -2,20 +2,19 @@
 
 A Markdown editor using **Tkinter**
 
+[![Static Badge](https://img.shields.io/badge/Download%20-%20tkMarker?style=for-the-badge&logo=github&labelColor=black&color=blue&link=https%3A%2F%2Fgithub.com%2FGordonZhang2024%2FtkMarker%2Freleases)](https://github.com/GordonZhang2024/tkMarker/releases)
+
+
+
 ![GitHub forks](https://img.shields.io/github/forks/GordonZhang2024/tkMarker)
 ![GitHub Repo stars](https://img.shields.io/github/stars/GordonZhang2024/tkMarker)
 ![GitHub watchers](https://img.shields.io/github/watchers/GordonZhang2024/tkMarker)
-![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/GordonZhang2024/tkMarker/latest/total)
 
 ## Features
 - [x] Markdown preview
 - [x] Basic markdown syntax support
 - [ ] Auto refresh
 - [ ] Code highlight
-
-[![Static Badge](https://img.shields.io/badge/Download%20-%20tkMarker?style=for-the-badge&link=https%3A%2F%2Fgithub.com%2FGordonZhang2024%2FtkMarker%2Freleases)](https://github.com/GordonZhang2024/tkMarker/releases)
-
-
 
 ![Pasted image](https://github.com/GordonZhang2024/tkMarker/assets/159539185/71b3aa10-13ff-4a52-b55a-87d84252094b)
 
