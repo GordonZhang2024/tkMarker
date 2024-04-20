@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-cd src/
+cd ../src/
 
 pylint *.py
 
