@@ -52,7 +52,7 @@ You will see the editor.
 
 
 
-*This is a software with **ABSOLUTELY NO WARRANTY**.
+*This is a software with **ABSOLUTELY NO WARRANTY**.*
 
-Feel free to report an issue or create a pull request.*
+*Feel free to report an issue or start a pull request.*
 
