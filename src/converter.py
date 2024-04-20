@@ -5,6 +5,8 @@ Module converter
 Convert Markdown to HTML
 """
 
+import re
+
 """
 tkMarker
     A Markdown editor using tkinter
@@ -24,8 +26,6 @@ Copyright (C) 2024 Gordon Zhang
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-import re
-
 def convert(markdown: str, preview=False, file_path='./') -> str:
     """
     Function convert()
@@ -36,6 +36,7 @@ def convert(markdown: str, preview=False, file_path='./') -> str:
     markdown = markdown.splitlines()
     html = convert_str(markdown, preview=preview)
     return html
+
 
 def convert_str(markdown: list, preview=False, file_path='./') -> str:
     """
@@ -63,7 +64,7 @@ def convert_str(markdown: list, preview=False, file_path='./') -> str:
 </html>
 '''\
         + html\
-        + '</html>'
+            + '</html>'
     else:
         html = '''\
 <html>
@@ -79,15 +80,16 @@ def convert_str(markdown: list, preview=False, file_path='./') -> str:
 </html>
 '''\
         + html\
-        + '</html>'
+            + '</html>'
 
-    quoted_code  = re.findall(r'```[\w\W]+?```', html)
+    quoted_code = re.findall(r'```[\w\W]+?```', html)
     if quoted_code:
         for i in quoted_code:
             quoted_code = '<code>' + i[3:-3] + '</code>'
             html = html.replace(i, quoted_code)
 
     return html
+
 
 def convert_single_line(line: str) -> str:
     """
@@ -148,7 +150,7 @@ def convert_single_line(line: str) -> str:
     img = re.match(r'!\[[\w\s]+?\]\([\w\W]+?\)', line)
     if img:
         img = str(img.group(0))
-        description = re.search(r'!\[[\w\s]+?\]',img)
+        description = re.search(r'!\[[\w\s]+?\]', img)
         description = description.group(0)
         src = img.replace(description, '')\
                  .replace('(', '')\

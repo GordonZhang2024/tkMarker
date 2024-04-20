@@ -30,6 +30,7 @@ Copyright (C) 2024 Gordon Zhang
 
 REPOS_URL = 'https://github.com/GordonZhang2024/tkMarker'
 
+
 def show_project_info():
     """
     Function show_project_info()
@@ -40,9 +41,11 @@ def show_project_info():
     label = ttk.Label(info_page, text='tkMarker')
     label.pack()
 
-    github_repos = ttk.Button(info_page, text=REPOS_URL, command=open_github_repos)
+    github_repos = ttk.Button(
+        info_page, text=REPOS_URL, command=open_github_repos)
     github_repos.pack()
     info_page.mainloop()
+
 
 def open_github_repos():
     """

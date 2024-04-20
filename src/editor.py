@@ -33,89 +33,112 @@ Copyright (C) 2024 Gordon Zhang
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-#filetypes
+# filetypes
 filetypes = [('Markdown', '*.md'), ("All Files", "*.*")]
 
+
 def load_preview():
-    #Load the preview
-    markdown_text_for_preview = text.get('1.0', 'end') #Get the text
+    """Load the preview"""
+    markdown_text_for_preview = text.get('1.0', 'end')  # Get the text
     preview_file = f'{home}/.tkmarker/{file_uuid}'
-    html = convert(markdown_text_for_preview, preview=True, file_path=os.path.split(filename))
-    with open(preview_file, 'w+') as p:
+    html = convert(markdown_text_for_preview, preview=True,
+                   file_path=os.path.split(filename))
+    with open(preview_file, 'w+', encoding='utf-8') as p:
         p.write(html)
 
-    #Open the preview file in the webbrowser
+    # Open the preview file in the webbrowser
     webbrowser.open_new(preview_file)
 
+
 def refresh_preview(arg):
+    """Refresh the preview"""
     markdown_text_for_preview = text.get('1.0', 'end')
     preview_file = f'{home}/.tkmarker/{file_uuid}'
-    html = convert(markdown_text_for_preview, preview=True, file_path=os.path.split(filename))
-    with open(preview_file, 'w') as p:
+    html = convert(markdown_text_for_preview, preview=True,
+                   file_path=os.path.split(filename))
+    with open(preview_file, 'w', encoding='utf-8') as p:
         p.write(html)
 
+
 def convert_to_html():
+    """Convert Markdown document to HTML"""
     markdown_text = text.get('1.0', 'end')
     output_file = filedialog.asksaveasfilename(filetypes=[('HTML', '*.html')])
     html = convert(markdown_text)
-    with open(output_file, 'w') as o_file:
+    with open(output_file, 'w', encoding='utf-8') as o_file:
         o_file.write(html)
 
+
 def show_popup_menu(event):
-    edit.post(event.x_root,event.y_root)
+    """Show the popup menu"""
+    edit.post(event.x_root, event.y_root)
+
 
 def paste():
+    """Paste"""
     text.event_generate('<<Paste>>')
 
+
 def copy():
+    """Copy"""
     text.event_generate('<<Copy>>')
 
+
 def cut():
+    """Cut"""
     text.event_generate('<<Cut>>')
 
+
 def open_file():
+    """Open a file"""
     global filename
-    filename = filedialog.askopenfilename(initialdir='~/Documents', filetypes=filetypes)
-    with open(filename) as f:
+    filename = filedialog.askopenfilename(
+        initialdir='~/Documents', filetypes=filetypes)
+    with open(filename, encoding='utf-8') as f:
         t = f.read()
     text.delete(1.0, tkinter.END)
     text.insert(tkinter.END, t)
     editor.title(filename)
 
+
 def save():
+    """Save"""
     global filename
     if filename == 'New File':
-        filename = filedialog.asksaveasfilename(initialdir='~/Documents', filetypes=filetypes)
+        filename = filedialog.asksaveasfilename(
+            initialdir='~/Documents', filetypes=filetypes)
         editor.title(filename)
 
     markdown_text = text.get('1.0', 'end')
-    with open(filename, mode='w+') as f:
+    with open(filename, 'w+', encoding='utf-8') as f:
         f.write(markdown_text)
 
+
 def new_file():
+    """Open new file"""
     global filename
     global editor
     editor = tkinter.Tk()
     editor.title(filename)
-    width= editor.winfo_screenwidth()
-    height= editor.winfo_screenheight()
-    editor.geometry("%dx%d" % (width, height))
+    width = editor.winfo_screenwidth()
+    height = editor.winfo_screenheight()
+    editor.geometry('%dx%d' % (width, height))
     menubar = tkinter.Menu(editor)
 
-    #Add the 'File' menubar
+    # Add the 'File' menubar
     file = tkinter.Menu(menubar, tearoff=0)
     menubar.add_cascade(label='File', menu=file)
 
-    #Add the 'Edit' menubar
+    # Add the 'Edit' menubar
     global edit
     edit = tkinter.Menu(menubar, tearoff=0)
     menubar.add_cascade(label='Edit', menu=edit)
 
-    #Add the 'Help' menubar
+    # Add the 'Help' menubar
     help_menu = tkinter.Menu(editor, tearoff=0)
     menubar.add_cascade(label='Help', menu=help_menu)
 
-    #Add the 'Preview' button
+    # Add the 'Preview' button
     menubar.add_command(label='Preview', command=load_preview)
 
     global text
@@ -136,19 +159,20 @@ def new_file():
 
     help_menu.add_command(label='About', command=show_project_info)
 
-    #Add keyboard shortcuts
+    # Add keyboard shortcuts
     editor.bind('<Button-3>', show_popup_menu)
     editor.bind('Control-C', copy)
     editor.bind('Control-V', paste)
     editor.bind('Control-S', save)
 
-    #Refresh Automatically
+    # Refresh Automatically
     editor.bind('<KeyRelease>', refresh_preview)
-    
+
     editor.mainloop()
 
+
 if __name__ == '__main__':
-    #Init
+    # Init
     home = os.path.expanduser('~')
     filename = 'New File'
     global file_uuid
