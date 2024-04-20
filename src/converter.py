@@ -145,13 +145,17 @@ def convert_single_line(line: str) -> str:
         l = f'<a href={href}>{text}</a>'
         line = line.replace(link, l)
 
-    img = re.match(r'!\[\w?\]\([\w\W]+?\)', line)
+    img = re.match(r'!\[[\w\s]+?\]\([\w\W]+?\)', line)
     if img:
         img = str(img.group(0))
-        src = img.replace('![]', '')\
+        description = re.search(r'!\[[\w\s]+?\]',img)
+        description = description.group(0)
+        src = img.replace(description, '')\
                  .replace('(', '')\
                  .replace(')', '')
-        image = f'<img src={src}/>'
+        description = description.replace('![', '')\
+                                 .replace(']', '')
+        image = f'<img src={src} alt={description}/>'
         line = line.replace(img, image)
 
     hr = line == '---'
@@ -162,5 +166,5 @@ def convert_single_line(line: str) -> str:
     if li:
         line = str(li.group(0))
         line = line.replace('-', '<ul><li>') + '</li></ul>'
-
+    print('a')
     return line

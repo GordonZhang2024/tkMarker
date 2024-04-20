@@ -5,6 +5,10 @@ Module get_help:
 Get the help
 """
 
+import tkinter
+from tkinter import ttk
+import webbrowser
+
 """
 tkMarker
     A Markdown editor using tkinter
@@ -23,10 +27,6 @@ Copyright (C) 2024 Gordon Zhang
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-
-import tkinter
-from tkinter import ttk
-import webbrowser
 
 REPOS_URL = 'https://github.com/GordonZhang2024/tkMarker'
 

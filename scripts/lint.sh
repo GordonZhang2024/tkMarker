@@ -2,5 +2,6 @@
 
 cd ../src/
 
-pylint *.py
+files=$(ls)
+pylint $files
 
