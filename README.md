@@ -11,6 +11,7 @@ A Markdown editor using **Tkinter**
 ![GitHub watchers](https://img.shields.io/github/watchers/GordonZhang2024/tkMarker)
 ![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/GordonZhang2024/tkMarker/latest/total)
 
+[Download](https://github.com/GordonZhang2024/tkMarker/releases)
 
 ![Pasted image](https://github.com/GordonZhang2024/tkMarker/assets/159539185/71b3aa10-13ff-4a52-b55a-87d84252094b)
 
