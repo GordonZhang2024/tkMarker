@@ -26,6 +26,7 @@ Copyright (C) 2024 Gordon Zhang
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
+
 def convert(markdown: str, preview=False, file_path='./') -> str:
     """
     Function convert()
@@ -144,8 +145,8 @@ def convert_single_line(line: str) -> str:
         href = re.match(r'\([\w\s]+?\)', link).group(0)
         href = href.replace('(', '')
         href = href.replace(')', '')
-        l = f'<a href={href}>{text}</a>'
-        line = line.replace(link, l)
+        html_link = f'<a href={href}>{text}</a>'
+        line = line.replace(link, html_link)
 
     img = re.match(r'!\[[\w\s]+?\]\([\w\W]+?\)', line)
     if img:
