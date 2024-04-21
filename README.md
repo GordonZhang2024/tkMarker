@@ -31,16 +31,12 @@ $ pip install pyinstaller
 ###### GNU/Linux
 Then, type command:
 ```bash
-$ git clone 'https://github.com/GordonZhang2024/tkMarker.git'
-$ cd tkMarker
-$ ./build.sh
 $ sudo ./install.sh
 ```
 > [!IMPORTANT]
 > Please use Python >= 3.8
 
 
-## Usage
 Type command:
 ```bash
 $ tkmarker
