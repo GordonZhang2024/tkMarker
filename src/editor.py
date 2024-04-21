@@ -113,16 +113,17 @@ def save():
     with open(filename, 'w+', encoding='utf-8') as f:
         f.write(markdown_text)
 
-
 def new_file():
     """Open new file"""
     global filename
     global editor
     editor = tkinter.Tk()
     editor.title(filename)
+
+    #Set full screen
     width = editor.winfo_screenwidth()
     height = editor.winfo_screenheight()
-    editor.geometry('%dx%d' % (width, height))
+    editor.geometry(f'{width}x{height}')
     menubar = tkinter.Menu(editor)
 
     # Add the 'File' menubar

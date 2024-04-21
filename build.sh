@@ -16,5 +16,5 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-pyinstaller src/main.py src/converter.py src/get_help.py
+pyinstaller src/editor.py src/converter.py src/get_help.py
 

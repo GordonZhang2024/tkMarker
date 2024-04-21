@@ -29,4 +29,3 @@ dist_dir="${tkMarker_dir}/dist/main/"
 sudo ln -s "${dist_dir}/main" /usr/bin/tkmarker
 cd ~
 mkdir .tkmarker/
-touch .tkMarkerconfig.json

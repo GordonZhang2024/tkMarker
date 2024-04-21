@@ -169,5 +169,4 @@ def convert_single_line(line: str) -> str:
     if li:
         line = str(li.group(0))
         line = line.replace('-', '<ul><li>') + '</li></ul>'
-    print('a')
     return line
