@@ -21,11 +21,10 @@ A Markdown editor using **Tkinter**
 ## Installation
 ### Installing the dependencies
 ###### GNU/Linux
-This project requires **Pyinstaller** and **Tkinter**.
+This project requires **Tkinter**.
 To install them, type command:
 ```bash
 $ sudo dnf install python3-tkinter #On Fedora, CentOS, and Red Hat
-$ pip install pyinstaller
 ```
 ### Installing tkMarker
 ###### GNU/Linux
