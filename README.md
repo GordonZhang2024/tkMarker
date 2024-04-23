@@ -30,7 +30,7 @@ $ sudo dnf install python3-tkinter #On Fedora, CentOS, and Red Hat
 ###### GNU/Linux
 Then, type command:
 ```bash
-$ sudo ./install.sh
+$ ./install.sh
 ```
 > [!IMPORTANT]
 > Please use Python >= 3.8

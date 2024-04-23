@@ -20,6 +20,6 @@
 tkMarker_dir=$(pwd)
 src_dir="${tkMarker_dir}/src/"
 
-sudo ln -s "${src_dir}editor.py" /usr/bin/tkmarker
+ln -s "${src_dir}editor.py" ~/.local/bin/tkmarker
 cd ~
 mkdir .tkmarker/
