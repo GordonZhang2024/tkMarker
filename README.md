@@ -15,6 +15,7 @@ A Markdown editor using **Tkinter**
 - [x] Basic markdown syntax support
 - [ ] Auto refresh
 - [ ] Code highlight
+- [ ] Auto complete
 
 ![Pasted image](https://github.com/GordonZhang2024/tkMarker/assets/159539185/71b3aa10-13ff-4a52-b55a-87d84252094b)
 
