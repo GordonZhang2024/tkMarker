@@ -51,8 +51,7 @@ def convert_str(markdown: list, preview=False, file_path='./') -> str:
         line = convert_single_line(line) + '<br/>'
         html = html + line
 
-    if preview:
-        html = '''\
+    html = '''\
 <html>
     <style>
     p {
@@ -62,26 +61,18 @@ def convert_str(markdown: list, preview=False, file_path='./') -> str:
         background: lightgrey;
      }
     </style>
-</html>
+    <script>
+        function AutoRefresh(time) {
+            setTimeout("location.reload(true);", time);
+        }
+    </script>
+    <body onload = "JavaScript:AutoRefresh(2000);">
 '''\
-        + html\
-            + '</html>'
-    else:
-        html = '''\
-<html>
-    <style>
-    p {
-        background: lightgrey;
-    }
-    q {
-        background: lightgrey;
-     }
-    </style>
-    <title>Preview</title>
-</html>
-'''\
-        + html\
-            + '</html>'
+    + html\
+        + '''\
+    </body>
+    </html>
+    '''
 
     quoted_code = re.findall(r'```[\w\W]+?```', html)
     if quoted_code:

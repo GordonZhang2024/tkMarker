@@ -4,4 +4,3 @@ cd ../src/
 
 files=$(ls)
 pylint $files
-
