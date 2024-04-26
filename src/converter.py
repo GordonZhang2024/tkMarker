@@ -50,6 +50,17 @@ def convert_str(markdown: list, preview=False, file_path='./') -> str:
     for line in markdown:
         line = convert_single_line(line) + '<br/>'
         html = html + line
+    
+    script = ''
+    if preview:
+        script = '''\
+        <script>
+        function AutoRefresh(time) {
+            setTimeout("location.reload(true);", time);
+        }
+        </script>
+        '''
+
 
     html = '''\
 <html>
@@ -61,15 +72,13 @@ def convert_str(markdown: list, preview=False, file_path='./') -> str:
         background: lightgrey;
      }
     </style>
-    <script>
-        function AutoRefresh(time) {
-            setTimeout("location.reload(true);", time);
-        }
-    </script>
-    <body onload = "JavaScript:AutoRefresh(2000);">
-'''\
+    '''\
+    + script\
+    + '''\
+    <body onload = "JavaScript:AutoRefresh(5000);">
+    '''\
     + html\
-        + '''\
+    + '''\
     </body>
     </html>
     '''
