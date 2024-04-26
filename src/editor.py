@@ -144,7 +144,7 @@ def new_file():
     menubar.add_command(label='Preview', command=load_preview)
 
     global text
-    text = scrolledtext.ScrolledText(editor, undo=True)
+    text = scrolledtext.ScrolledText(editor, undo=True, font='Consolas')
     text.pack(fill='both', expand=True)
     text.focus_set()
 
