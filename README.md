@@ -13,7 +13,7 @@ A Markdown editor using **Tkinter**
 ## Features
 - [x] Markdown preview
 - [x] Basic markdown syntax support
-- [ ] Auto refresh
+- [x] Auto refresh
 - [ ] Code highlight
 - [ ] Auto complete
 
