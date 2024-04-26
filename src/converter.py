@@ -169,4 +169,18 @@ def convert_single_line(line: str) -> str:
     if li:
         line = str(li.group(0))
         line = line.replace('-', '<ul><li>') + '</li></ul>'
+    
+
+    # GitHub flavored alerts
+    gfm_alerts = {
+        '[!NOTE]': 'NOTE',
+        '[!TIP]': 'TIP',
+        '[!IMPORTANT]': 'IMPORTANT',
+        '[!WARNING]': 'WARNING',
+        '[!CAUTION]': 'CAUTION'
+    }
+
+    for origin, html in gfm_alerts.items():
+        line = line.replace(origin, html)
+
     return line
