@@ -13,6 +13,7 @@ A Markdown editor using **Tkinter**
 ## Features
 - [x] Markdown preview
 - [x] Basic markdown syntax support
+- [x] GitHub flavored Markdown support (beta)
 - [x] Auto refresh
 - [ ] Code highlight
 - [ ] Auto complete
