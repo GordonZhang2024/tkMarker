@@ -41,7 +41,7 @@ $ ./install.sh
 
 Type command:
 ```bash
-$ tkmarker
+$ tkmarker &
 ```
 You will see the editor.
 
