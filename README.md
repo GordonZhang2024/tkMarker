@@ -31,6 +31,7 @@ $ sudo dnf install python3-tkinter # On Fedora based GNU/Linux distributions
 ```
 ### Installing tkMarker
 ###### GNU/Linux
+First you need to [download a release](https://github.com/GordonZhang2024/tkMarker/releases) and extract the source tarball.
 Then, type command:
 ```bash
 $ ./install.sh
