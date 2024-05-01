@@ -50,7 +50,7 @@ def convert_str(markdown: list, preview=False, file_path='./') -> str:
     for line in markdown:
         line = convert_single_line(line) + '<br/>'
         html = html + line
-    
+
     script = ''
     if preview:
         script = '''\
@@ -61,27 +61,23 @@ def convert_str(markdown: list, preview=False, file_path='./') -> str:
         </script>
         '''
 
-
     html = '''\
-<html>
-    <style>
-    p {
-        background: lightgrey;
-    }
-    q {
-        background: lightgrey;
-     }
-    </style>
+    <html>
+        <style>
+            html {
+                font-family: 'Sans-Serif';
+            }
+        </style>
     '''\
-    + script\
-    + '''\
-    <body onload = "JavaScript:AutoRefresh(5000);">
-    '''\
-    + html\
-    + '''\
-    </body>
-    </html>
-    '''
+        + script\
+        + '''\
+            <body onload = "JavaScript:AutoRefresh(5000);">
+        '''\
+        + html\
+        + '''\
+            </body>
+            </html>
+        '''
 
     quoted_code = re.findall(r'```[\w\W]+?```', html)
     if quoted_code:
@@ -90,6 +86,46 @@ def convert_str(markdown: list, preview=False, file_path='./') -> str:
             html = html.replace(i, quoted_code)
 
     return html
+
+
+def convert_gfm(line: str) -> str:
+    # GitHub flavored alerts
+    gfm_alerts = {
+        '[!NOTE]': 'NOTE',
+        '[!TIP]': 'TIP',
+        '[!IMPORTANT]': 'IMPORTANT',
+        '[!WARNING]': 'WARNING',
+        '[!CAUTION]': 'CAUTION'
+    }
+
+    for origin, html in gfm_alerts.items():
+        line = line.replace(origin, html)
+
+    return line
+
+
+def replace_script_tag(line: str) -> str:
+    line = line.replace('<script>', '')\
+               .replace('</script>', '')
+
+    return line
+
+
+def convert_list(line: str) -> str:
+    li = re.match(r'-\s[\w\W]+', line)
+    if li:
+        line = str(li.group(0))
+        line = line.replace('-', '<ul><li>') + '</li></ul>'
+
+    return line
+
+
+def convert_code(line: str) -> str:
+    code = re.findall(r'`[\w\s</>]+?`', line)
+    if code:
+        for i in code:
+            c = '<q><code>' + i[1:-1] + '</code></q>'
+            line = line.replace(i, c)
 
 
 def convert_single_line(line: str) -> str:
@@ -105,7 +141,7 @@ def convert_single_line(line: str) -> str:
             line = line.replace(head, f'<h{lenth}>')
             line = line + f'</h{lenth}><hr/>'
 
-    bold = re.findall(r'[\*_]{2}[\w\s]+?[\*_]{2}', line)
+    bold = re.findall(r'[\*_]{2}[\w\W]+?[\*_]{2}', line)
     if bold:
         for i in bold:
             strong = '<strong>' + i[2:-2] + '</strong>'
@@ -123,12 +159,6 @@ def convert_single_line(line: str) -> str:
         lenth = len(quote) - 1
         line = line.replace(quote, lenth * '<blockquote>')
         line = line + lenth * '</blockquote>'
-
-    code = re.findall(r'`[\w\s</>]+?`', line)
-    if code:
-        for i in code:
-            c = '<q><code>' + i[1:-1] + '</code></q>'
-            line = line.replace(i, c)
 
     strikethrough = re.findall(r'~{2}[\w\s]+?~{2}', line)
     if strikethrough:
@@ -165,22 +195,13 @@ def convert_single_line(line: str) -> str:
     if hr:
         line = '<hr/>'
 
-    li = re.match(r'-\s[\w\W]+', line)
-    if li:
-        line = str(li.group(0))
-        line = line.replace('-', '<ul><li>') + '</li></ul>'
-    
+    line = convert_code(line)
 
-    # GitHub flavored alerts
-    gfm_alerts = {
-        '[!NOTE]': 'NOTE',
-        '[!TIP]': 'TIP',
-        '[!IMPORTANT]': 'IMPORTANT',
-        '[!WARNING]': 'WARNING',
-        '[!CAUTION]': 'CAUTION'
-    }
+    line = convert_list(line)
 
-    for origin, html in gfm_alerts.items():
-        line = line.replace(origin, html)
+    # GitHub flavored Markdown support
+    line = convert_gfm(line)
+
+    line = replace_script_tag(line)
 
     return line

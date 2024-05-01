@@ -39,7 +39,10 @@ def show_project_info():
     info_page = tkinter.Tk()
     info_page.title('About')
     info_page.config(cursor='star')
-    label = ttk.Label(info_page, text='tkMarker\nA Markdown editor using tkinter')
+    label = ttk.Label(
+        info_page,
+        text='tkMarker\nA Markdown editor using tkinter'
+    )
     label.pack()
 
     github_repos = ttk.Button(

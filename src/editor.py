@@ -56,6 +56,7 @@ def refresh_preview(arg):
     preview_file = f'{home}/.tkmarker/{file_uuid}'
     html = convert(markdown_text_for_preview, preview=True,
                    file_path=os.path.split(filename))
+
     with open(preview_file, 'w', encoding='utf-8') as p:
         p.write(html)
 
@@ -90,7 +91,7 @@ def cut():
 
 
 def open_file():
-    # pen a file
+    # open a file
     global filename
     filename = filedialog.askopenfilename(
         initialdir='~/Documents', filetypes=filetypes)
