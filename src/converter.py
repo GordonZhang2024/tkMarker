@@ -48,7 +48,7 @@ def convert_str(markdown: list, preview=False, file_path='./') -> str:
     html = ''
 
     for line in markdown:
-        line = convert_single_line(line) + '<br/>'
+        line = convert_single_line(line)
         html = html + line
 
     script = ''
@@ -117,6 +117,8 @@ def convert_list(line: str) -> str:
         line = str(li.group(0))
         line = line.replace('-', '<ul><li>') + '</li></ul>'
 
+    need_br_tag = False
+
     return line
 
 
@@ -133,6 +135,11 @@ def convert_single_line(line: str) -> str:
     Function convert_single_line()
     Convert single-line Markdown to HTML
     """
+    
+    global need_br_tag
+    need_br_tag = True # if the line need a '<br>' tag at the end.
+    
+
     head = re.match(r'#+\s', line)
     if head:
         head = str(head.group(0))
@@ -140,6 +147,7 @@ def convert_single_line(line: str) -> str:
         if lenth <= 6:
             line = line.replace(head, f'<h{lenth}>')
             line = line + f'</h{lenth}><hr/>'
+            need_br_tag = False
 
     bold = re.findall(r'[\*_]{2}[\w\W]+?[\*_]{2}', line)
     if bold:
@@ -190,12 +198,12 @@ def convert_single_line(line: str) -> str:
                                  .replace(']', '')
         image = f'<img src={src} alt={description}/>'
         line = line.replace(img, image)
+        need_br_tag = False
 
     hr = line == '---'
     if hr:
         line = '<hr/>'
-
-    line = convert_code(line)
+        need_br_tag = False
 
     line = convert_list(line)
 
