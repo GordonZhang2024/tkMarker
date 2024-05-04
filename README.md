@@ -5,7 +5,7 @@ A Markdown editor using **Tkinter**
 [![Static Badge](https://img.shields.io/badge/Download%20-%20tkMarker?style=for-the-badge&logo=github&labelColor=black&color=blue&link=https%3A%2F%2Fgithub.com%2FGordonZhang2024%2FtkMarker%2Freleases)](https://github.com/GordonZhang2024/tkMarker/releases)
 [![GitHub License](https://img.shields.io/github/license/GordonZhang2024/tkMarker?style=for-the-badge&logo=gnu)](https://www.gnu.org/licenses/gpl-3.0.html)
 
-
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/GordonZhang2024/tkMarker/python-app.yml)
 ![GitHub forks](https://img.shields.io/github/forks/GordonZhang2024/tkMarker)
 ![GitHub Repo stars](https://img.shields.io/github/stars/GordonZhang2024/tkMarker)
 ![GitHub watchers](https://img.shields.io/github/watchers/GordonZhang2024/tkMarker)
