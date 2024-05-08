@@ -42,6 +42,7 @@ $ ./install.sh
 > Please use Python >= 3.8
 
 
+## Usage
 Type command:
 ```bash
 $ tkmarker &
