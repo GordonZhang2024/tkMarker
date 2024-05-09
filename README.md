@@ -52,10 +52,7 @@ You will see the editor.
 *Click the <keyboard>Preview</keyboard> Button, then the editor will open the preview in the web browser.*
 
 ## License
-![](https://www.gnu.org/graphics/gplv3-or-later.png)
-[GPL-3.0 license](https://www.gnu.org/licenses/gpl-3.0.html)
-
-
+MIT License
 
 *This is a software with **ABSOLUTELY NO WARRANTY**.*
 
