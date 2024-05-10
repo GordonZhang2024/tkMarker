@@ -53,6 +53,7 @@ You will see the editor.
 ## License
 MIT License
 
+---
 *This is a software with **ABSOLUTELY NO WARRANTY**.*
 
 *Feel free to report an issue or start a pull request.*
