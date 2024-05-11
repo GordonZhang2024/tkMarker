@@ -38,14 +38,21 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-# filetypes
-filetypes = [('Markdown', '*.md'), ("All Files", "*.*")]
+# Availible filetypes for the file selection window
+filetypes = [
+    ('Markdown', '*.md'),
+    ("All Files", "*.*")
+]
 
 
 def load_preview():
     # Load the preview
     markdown_text_for_preview = text.get('1.0', 'end')  # Get the text
+
+    # Use uuid as the name of the preview file
     preview_file = f'{home}/.tkmarker/{file_uuid}'
+
+    # Convert the Markdown document to HTML and write to the preview file
     html = convert(markdown_text_for_preview, preview=True,
                    file_path=os.path.split(filename))
     with open(preview_file, 'w+', encoding='utf-8') as p:
@@ -99,9 +106,14 @@ def open_file():
     # open a file
     global filename
     filename = filedialog.askopenfilename(
-        initialdir='~/Documents', filetypes=filetypes)
+        initialdir='~/Documents',
+        filetypes=filetypes
+    )
+
     with open(filename, encoding='utf-8') as f:
         t = f.read()
+    
+    # Insert the text into the editor
     text.delete(1.0, tkinter.END)
     text.insert(tkinter.END, t)
     editor.title(filename)
@@ -112,7 +124,11 @@ def save():
     global filename
     if filename == 'New File':
         filename = filedialog.asksaveasfilename(
-            initialdir='~/Documents', filetypes=filetypes)
+            initialdir='~/Documents',
+            filetypes=filetypes
+        )
+
+        # Set the filename as the title of the window
         editor.title(filename)
 
     markdown_text = text.get('1.0', 'end')
@@ -126,6 +142,7 @@ def new_file():
     global editor
     editor = tkinter.Tk()
     editor.title(filename)
+    editor.wm_title('tkMarker')
 
     # Set full screen
     width = editor.winfo_screenwidth()
@@ -149,22 +166,28 @@ def new_file():
     # Add the 'Preview' button
     menubar.add_command(label='Preview', command=load_preview)
 
+    # Add the text area
     global text
     text = scrolledtext.ScrolledText(editor, undo=True, font='Consolas')
     text.pack(fill='both', expand=True)
+    # Set focus
     text.focus_set()
 
+    # Add the "file" menu
     file.add_command(label='Open...', command=open_file)
     file.add_command(label='Save', command=save)
     file.add_separator()
     file.add_command(label='Convert to HTML', command=convert_to_html)
 
+    # Add the "edit" menu
     edit.add_command(label='Paste', command=paste)
     edit.add_command(label='Copy', command=copy)
     edit.add_command(label='Cut', command=cut)
 
+    # Pack the menubar
     editor.config(menu=menubar)
 
+    # Add the About menu
     help_menu.add_command(label='About', command=show_project_info)
 
     # Add keyboard shortcuts
@@ -172,6 +195,8 @@ def new_file():
     editor.bind('Control-C', copy)
     editor.bind('Control-V', paste)
     editor.bind('Control-S', save)
+    editor.bind('Control-P', load_preview)
+    editor.bind('<F1>', show_project_info)
 
     # Refresh Automatically
     editor.bind('<KeyRelease>', refresh_preview)
@@ -186,4 +211,5 @@ if __name__ == '__main__':
     global file_uuid
     file_uuid = uuid.uuid1()
 
+    # Start the editor
     new_file()

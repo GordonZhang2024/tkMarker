@@ -58,6 +58,7 @@ def convert_str(markdown: list, preview=False, file_path='./') -> str:
 
     script = ''
     if preview:
+        # reload automatically
         script = '''\
         <script>
         function AutoRefresh(time) {
@@ -84,17 +85,14 @@ def convert_str(markdown: list, preview=False, file_path='./') -> str:
             </html>
         '''
 
-    quoted_code = re.findall(r'```[\w\W]+?```', html)
-    if quoted_code:
-        for i in quoted_code:
-            quoted_code = '<code>' + i[3:-3] + '</code>'
-            html = html.replace(i, quoted_code)
+    # Convert quoted code
+    html = convert_code(html)
 
     return html
 
 
 def convert_gfm(line: str) -> str:
-    # GitHub flavored alerts
+    # GitHub flavored Markdown support
     gfm_alerts = {
         '[!NOTE]': 'NOTE',
         '[!TIP]': 'TIP',
@@ -105,6 +103,9 @@ def convert_gfm(line: str) -> str:
 
     for origin, html in gfm_alerts.items():
         line = line.replace(origin, html)
+
+    line = line.replace('[ ]', '<input type="checkbox">')\
+               .replace('[x]', '<input type="checkbox" checked>')
 
     return line
 
@@ -127,12 +128,15 @@ def convert_list(line: str) -> str:
     return line
 
 
-def convert_code(line: str) -> str:
-    code = re.findall(r'`[\w\s</>]+?`', line)
+def convert_code(text: str) -> str:
+    # Convert code
+    code = re.findall(r'`[\w\s</>]+?`', text)
     if code:
         for i in code:
             c = '<q><code>' + i[1:-1] + '</code></q>'
-            line = line.replace(i, c)
+            text = text.replace(i, c)
+
+    return text
 
 
 def convert_single_line(line: str) -> str:
@@ -143,78 +147,89 @@ def convert_single_line(line: str) -> str:
     
     global need_br_tag
     need_br_tag = True # if the line need a '<br>' tag at the end.
+    have_style = True # if there is a style.
     
+    while have_style: # loop(because there will possibly be nested styles)
+        # find a style and convert it to html
+        have_style = False
+        head = re.match(r'#+\s', line)
+        if head:
+            head = str(head.group(0))
+            lenth = len(head) - 1
+            if lenth <= 6:
+                line = line.replace(head, f'<h{lenth}>')
+                line = line + f'</h{lenth}><hr/>'
+                need_br_tag = False
+                have_style = True
 
-    head = re.match(r'#+\s', line)
-    if head:
-        head = str(head.group(0))
-        lenth = len(head) - 1
-        if lenth <= 6:
-            line = line.replace(head, f'<h{lenth}>')
-            line = line + f'</h{lenth}><hr/>'
+        bold = re.findall(r'[\*_]{2}[\w\W]+?[\*_]{2}', line)
+        if bold:
+            for i in bold:
+                strong = '<strong>' + i[2:-2] + '</strong>'
+                line = line.replace(i, strong)
+                have_style = True
+
+        italic = re.findall(r'[\*_][\w\s</>]+?[\*_]', line)
+        if italic:
+            for i in italic:
+                em = '<em>' + i[1:-1] + '</em>'
+                line = line.replace(i, em)
+                have_style = True
+
+        quote = re.match(r'[>\s]+\s', line)
+        if quote:
+            quote = str(quote.group(0))
+            lenth = len(quote) - 1
+            line = line.replace(quote, lenth * '<blockquote>')
+            line = line + lenth * '</blockquote>'
+            have_style = True
+
+        strikethrough = re.findall(r'~{2}[\w\s]+?~{2}', line)
+        if strikethrough:
+            for i in strikethrough:
+                s = '<s>' + i[2:-2] + '</s>'
+                line = line.replace(i, s)
+                have_style = True
+
+        link = re.search(r'\[[\w\s]+?\]\([\w\s]+?\)', line)
+        if link:
+            link = str(link.group(0))
+            text = re.match(r'\[[\w\s]+?\]', link).group(0)
+            text = text.replace('(', '')
+            text = text.replace(')', '')
+            href = re.match(r'\([\w\s]+?\)', link).group(0)
+            href = href.replace('(', '')
+            href = href.replace(')', '')
+            html_link = f'<a href={href}>{text}</a>'
+            line = line.replace(link, html_link)
+            have_style = True
+
+        img = re.search(r'!\[[\w\s]+?\]\([\w\W]+?\)', line)
+        if img:
+            img = str(img.group(0))
+            description = re.search(r'!\[[\w\s]+?\]', img)
+            description = description.group(0)
+            src = img.replace(description, '')\
+                    .replace('(', '')\
+                    .replace(')', '')
+            description = description.replace('![', '')\
+                                    .replace(']', '')
+            image = f'<img src={src} alt={description}/>'
+            line = line.replace(img, image)
             need_br_tag = False
+            have_style = True
 
-    bold = re.findall(r'[\*_]{2}[\w\W]+?[\*_]{2}', line)
-    if bold:
-        for i in bold:
-            strong = '<strong>' + i[2:-2] + '</strong>'
-            line = line.replace(i, strong)
+        hr = line == '---'
+        if hr:
+            line = '<hr/>'
+            need_br_tag = False
+            have_style = True
 
-    italic = re.findall(r'[\*_][\w\s</>]+?[\*_]', line)
-    if italic:
-        for i in italic:
-            em = '<em>' + i[1:-1] + '</em>'
-            line = line.replace(i, em)
+        line = convert_list(line)
 
-    quote = re.match(r'[>\s]+\s', line)
-    if quote:
-        quote = str(quote.group(0))
-        lenth = len(quote) - 1
-        line = line.replace(quote, lenth * '<blockquote>')
-        line = line + lenth * '</blockquote>'
+        # GitHub flavored Markdown support
+        line = convert_gfm(line)
 
-    strikethrough = re.findall(r'~{2}[\w\s]+?~{2}', line)
-    if strikethrough:
-        for i in strikethrough:
-            s = '<s>' + i[2:-2] + '</s>'
-            line = line.replace(i, s)
-
-    link = re.match(r'\[[\w\s]+?\]\([\w\s]+?\)', line)
-    if link:
-        link = str(link.group(0))
-        text = re.match(r'\[[\w\s]+?\]', link).group(0)
-        text = text.replace('(', '')
-        text = text.replace(')', '')
-        href = re.match(r'\([\w\s]+?\)', link).group(0)
-        href = href.replace('(', '')
-        href = href.replace(')', '')
-        html_link = f'<a href={href}>{text}</a>'
-        line = line.replace(link, html_link)
-
-    img = re.match(r'!\[[\w\s]+?\]\([\w\W]+?\)', line)
-    if img:
-        img = str(img.group(0))
-        description = re.search(r'!\[[\w\s]+?\]', img)
-        description = description.group(0)
-        src = img.replace(description, '')\
-                 .replace('(', '')\
-                 .replace(')', '')
-        description = description.replace('![', '')\
-                                 .replace(']', '')
-        image = f'<img src={src} alt={description}/>'
-        line = line.replace(img, image)
-        need_br_tag = False
-
-    hr = line == '---'
-    if hr:
-        line = '<hr/>'
-        need_br_tag = False
-
-    line = convert_list(line)
-
-    # GitHub flavored Markdown support
-    line = convert_gfm(line)
-
-    line = replace_script_tag(line)
+        line = replace_script_tag(line)
 
     return line

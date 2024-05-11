@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# This file is used to format the source files automatically
+
 cd ../src
 files=$(ls)
 
