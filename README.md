@@ -50,6 +50,9 @@ You will see the editor.
 
 *Click the <keyboard>Preview</keyboard> Button, then the editor will open the preview in the web browser.*
 
+## Help Wanted
+Help develop it!
+
 ## License
 MIT License
 
