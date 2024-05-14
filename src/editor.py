@@ -112,7 +112,7 @@ def open_file():
 
     with open(filename, encoding='utf-8') as f:
         t = f.read()
-    
+
     # Insert the text into the editor
     text.delete(1.0, tkinter.END)
     text.insert(tkinter.END, t)

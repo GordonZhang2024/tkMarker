@@ -123,8 +123,6 @@ def convert_list(line: str) -> str:
         line = str(li.group(0))
         line = line.replace('-', '<ul><li>') + '</li></ul>'
 
-    need_br_tag = False
-
     return line
 
 
@@ -144,12 +142,12 @@ def convert_single_line(line: str) -> str:
     Function convert_single_line()
     Convert single-line Markdown to HTML
     """
-    
+
     global need_br_tag
-    need_br_tag = True # if the line need a '<br>' tag at the end.
-    have_style = True # if there is a style.
-    
-    while have_style: # loop(because there will possibly be nested styles)
+    need_br_tag = True  # if the line need a '<br>' tag at the end.
+    have_style = True  # if there is a style.
+
+    while have_style:  # loop(because there will possibly be nested styles)
         # find a style and convert it to html
         have_style = False
         head = re.match(r'#+\s', line)
@@ -210,10 +208,10 @@ def convert_single_line(line: str) -> str:
             description = re.search(r'!\[[\w\s]+?\]', img)
             description = description.group(0)
             src = img.replace(description, '')\
-                    .replace('(', '')\
-                    .replace(')', '')
+                     .replace('(', '')\
+                     .replace(')', '')
             description = description.replace('![', '')\
-                                    .replace(']', '')
+                                     .replace(']', '')
             image = f'<img src={src} alt={description}/>'
             line = line.replace(img, image)
             need_br_tag = False

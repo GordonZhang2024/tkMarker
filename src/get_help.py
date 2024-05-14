@@ -51,8 +51,16 @@ def show_project_info():
     )
     label.pack()
 
-    github_repos = ttk.Button(info_page, text='GitHub', command=open_github_repos)
-    issue_tracker = ttk.Button(info_page, text='Report an issue', command=open_issue_url)
+    github_repos = ttk.Button(
+        info_page,
+        text='GitHub',
+        command=open_github_repos
+    )
+    issue_tracker = ttk.Button(
+        info_page,
+        text='Report an issue',
+        command=open_issue_url
+    )
     github_repos.pack()
     issue_tracker.pack()
     info_page.mainloop()
@@ -65,7 +73,7 @@ def open_github_repos():
     """
     webbrowser.open_new(REPOS_URL)
 
+
 def open_issue_url():
     # Open the issue tracker
     webbrowser.open_new(ISSUE_URL)
-
