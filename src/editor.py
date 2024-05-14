@@ -103,7 +103,7 @@ def cut():
 
 
 def open_file():
-    # open a file
+    # Open a file
     global filename
     filename = filedialog.askopenfilename(
         initialdir='~/Documents',
@@ -137,7 +137,7 @@ def save():
 
 
 def new_file():
-    # pen new file
+    # Open new file
     global filename
     global editor
     editor = tkinter.Tk()
