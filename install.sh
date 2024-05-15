@@ -17,13 +17,16 @@ if test -f ~/.local/bin/tkmarker; then
     echo "It seems like you have already installed tkmarker."
 else
     if test -f /usr/bin/python -o -f /bin/python -o -f ~/.local/bin/python; then
+        py_version=$(python --version)
+        echo -e "\x1b[1mMake sure you have already installed Python >= 3.8 and tkinter!\x1b[0m"
+        echo "Current Python version: $py_version."
         tkMarker_dir=$(pwd)
         src_dir="${tkMarker_dir}/src/"
 
-        echo "Creating symbolic link (~/.local/bin/tkmarker)"
+        echo "Creating symbolic link (~/.local/bin/tkmarker) ..."
         ln -s "${src_dir}editor.py" ~/.local/bin/tkmarker
 
-        echo "Creating .tkMarker directory"
+        echo "Creating .tkMarker directory ..."
         cd ~
         mkdir .tkmarker/
 
