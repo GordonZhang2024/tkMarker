@@ -11,7 +11,7 @@ A Markdown editor using **Tkinter**
 
 [website](https://gordonzhang.pythonanywhere.com/projects/tkMarker/)
 
-## Features
+## 🚀 Features
 - [x] Markdown preview
 - [x] Basic markdown syntax support
 - [x] GitHub flavored Markdown support (beta)
