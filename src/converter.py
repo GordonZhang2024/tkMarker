@@ -69,9 +69,13 @@ def convert_str(markdown: list, preview=False, file_path='./') -> str:
 
     html = '''\
     <html>
+        <title>
+            Preview
+        </title>
+        <!This is the preview.>
         <style>
             html {
-                font-family: 'Sans-Serif';
+                font-family: 'Courier';
             }
         </style>
     '''\
