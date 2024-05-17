@@ -35,6 +35,7 @@ SOFTWARE.
 
 REPOS_URL = 'https://github.com/GordonZhang2024/tkMarker'
 ISSUE_URL = 'https://github.com/GordonZhang2024/tkMarker/issues'
+WEBSITE_URL = 'https://gordonzhang.pythonanywhere.com/projects/tkMarker/'
 
 
 def show_project_info():
@@ -47,22 +48,48 @@ def show_project_info():
     info_page.config(cursor='star')
     label = ttk.Label(
         info_page,
-        text='tkMarker\nA Markdown editor using tkinter'
+        text='tkMarker\n',
+        font=('Consolas', 20)
     )
     label.pack()
+
+    description = tkinter.Label(
+        info_page,
+        text='A Markdown editor using tkinter',
+        font=('Sans Mono', 10)
+    )
+    description.pack()
 
     github_repos = ttk.Button(
         info_page,
         text='GitHub',
         command=open_github_repos
     )
+
+    website = tkinter.Button(
+        info_page,
+        text='Website',
+        bg='cyan',
+        command=open_website
+    )
+    
     issue_tracker = ttk.Button(
         info_page,
         text='Report an issue',
         command=open_issue_url
     )
+    
     github_repos.pack()
+    website.pack()
     issue_tracker.pack()
+
+    feel_free_label = tkinter.Label(
+        info_page,
+        text='Feel free to report an issue or start a pull request.',
+        font=('Consolas', 10)
+    )
+    feel_free_label.pack()
+
     info_page.mainloop()
 
 
@@ -77,3 +104,8 @@ def open_github_repos():
 def open_issue_url():
     # Open the issue tracker
     webbrowser.open_new(ISSUE_URL)
+
+
+def open_website():
+    webbrowser.open(WEBSITE_URL)
+

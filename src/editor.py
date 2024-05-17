@@ -168,7 +168,7 @@ def new_file():
 
     # Add the text area
     global text
-    text = scrolledtext.ScrolledText(editor, undo=True, font=('Consolas', 15))
+    text = scrolledtext.ScrolledText(editor, undo=True, font=('Sans Mono', 15))
     text.pack(fill='both', expand=True)
     # Set focus
     text.focus_set()
