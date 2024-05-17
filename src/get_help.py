@@ -56,7 +56,7 @@ def show_project_info():
     description = tkinter.Label(
         info_page,
         text='A Markdown editor using tkinter',
-        font=('Sans Mono', 10)
+        font=('Consolas', 10)
     )
     description.pack()
 
