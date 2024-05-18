@@ -234,4 +234,7 @@ def convert_single_line(line: str) -> str:
 
         line = replace_script_tag(line)
 
+    if need_br_tag:
+        line = line + '<br/>'
+
     return line
