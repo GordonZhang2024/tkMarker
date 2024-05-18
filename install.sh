@@ -34,10 +34,6 @@ else
         echo "Creating .tkMarker directory ..."
         cd ~
         mkdir .tkmarker/
-	
-	#static_dir="${tkMarker_dir}/static/"
-	#icon="${static_dir}/tkMarker.png"
-	#echo "Icon=${icon}" > tkmarker.desktop
 
         echo -e "\x1b[32mComplete!\x1b[0m"
         echo -e "Type command \x1b[3;4mtkmarker\x1b[0m to run it :)"

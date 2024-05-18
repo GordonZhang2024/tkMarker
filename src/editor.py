@@ -139,6 +139,7 @@ def save():
 def new_file():
     # Open new file
     global filename
+    filename = 'New File'
     global editor
     editor = tkinter.Tk()
     editor.title(filename)
@@ -207,7 +208,6 @@ def new_file():
 if __name__ == '__main__':
     # Init
     home = os.path.expanduser('~')
-    filename = 'New File'
     global file_uuid
     file_uuid = uuid.uuid1()
 

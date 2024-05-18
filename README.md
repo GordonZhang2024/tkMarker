@@ -2,6 +2,9 @@
 
 A Markdown editor using **Tkinter**
 
+![logo](https://gordonzhang.pythonanywhere.com/static/tkMarker.png)
+
+
 [![Static Badge](https://img.shields.io/badge/Download%20-%20tkMarker?style=for-the-badge&logo=github&labelColor=black&color=blue&link=https%3A%2F%2Fgithub.com%2FGordonZhang2024%2FtkMarker%2Freleases)](https://github.com/GordonZhang2024/tkMarker/releases)
 
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/GordonZhang2024/tkMarker/python-app.yml)
@@ -19,7 +22,7 @@ A Markdown editor using **Tkinter**
 - [ ] Code highlight
 - [ ] Auto complete
 
-![Pasted image](https://github.com/GordonZhang2024/tkMarker/assets/159539185/71b3aa10-13ff-4a52-b55a-87d84252094b)
+![Pasted image](https://gordonzhang.pythonanywhere.com/static/screenshot.png)
 
 ## Installation
 ### Installing the dependencies
@@ -39,6 +42,8 @@ $ ./install.sh
 ```
 > [!IMPORTANT]
 > Please use Python >= 3.8
+
+You can also create a desktop icon by yourself.
 
 
 ## Usage
