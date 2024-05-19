@@ -75,7 +75,7 @@ def convert_str(markdown: list, preview=False, file_path='./') -> str:
         <!This is the preview.>
         <style>
             html {
-                font-family: 'Courier';
+                font-family: 'Sans Mono';
             }
         </style>
     '''\
@@ -193,7 +193,7 @@ def convert_single_line(line: str) -> str:
                 line = line.replace(i, s)
                 have_style = True
 
-        link = re.search(r'\[[\w\s]+?\]\([\w\s]+?\)', line)
+        link = re.search(r'\[[\w\W\s]+?\]\([\w\s]+?\)', line)
         if link:
             link = str(link.group(0))
             text = re.match(r'\[[\w\s]+?\]', link).group(0)
@@ -206,14 +206,19 @@ def convert_single_line(line: str) -> str:
             line = line.replace(link, html_link)
             have_style = True
 
-        img = re.search(r'!\[[\w\s]+?\]\([\w\W]+?\)', line)
+        img = re.search(r'!\[[\w\W\s]+?\]\([\w\W]+?\)', line)
         if img:
             img = str(img.group(0))
             description = re.search(r'!\[[\w\s]+?\]', img)
-            description = description.group(0)
+            if description:
+                description = description.group(0)
+            else:
+                description = ''
+
             src = img.replace(description, '')\
                      .replace('(', '')\
                      .replace(')', '')
+            
             description = description.replace('![', '')\
                                      .replace(']', '')
             image = f'<img src={src} alt={description}/>'

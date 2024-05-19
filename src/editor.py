@@ -4,15 +4,15 @@
 module main
 The main program of tkMarker
 """
-
-import tkinter
+import ttkbootstrap as ttk
+from ttkbootstrap.constants import *
 import webbrowser
 import os
-from tkinter import filedialog, scrolledtext
+from tkinter import filedialog
 import uuid
 
 from converter import convert
-from get_help import show_project_info
+import get_help
 
 """
 tkMarker
@@ -44,6 +44,9 @@ filetypes = [
     ("All Files", "*.*")
 ]
 
+
+def show_project_info():
+    get_help.show_project_info()
 
 def load_preview():
     # Load the preview
@@ -114,8 +117,8 @@ def open_file():
         t = f.read()
 
     # Insert the text into the editor
-    text.delete(1.0, tkinter.END)
-    text.insert(tkinter.END, t)
+    text.delete(1.0, ttk.END)
+    text.insert(ttk.END, t)
     editor.title(filename)
 
 
@@ -141,27 +144,25 @@ def new_file():
     global filename
     filename = 'New File'
     global editor
-    editor = tkinter.Tk()
+    editor = ttk.Window(themename='lumen')
     editor.title(filename)
     editor.wm_title('tkMarker')
 
     # Set full screen
-    width = editor.winfo_screenwidth()
-    height = editor.winfo_screenheight()
-    editor.geometry(f'{width}x{height}')
-    menubar = tkinter.Menu(editor)
+    #editor.geometry('1000x1000')
+    menubar = ttk.Menu(editor)
 
     # Add the 'File' menubar
-    file = tkinter.Menu(menubar, tearoff=0)
+    file = ttk.Menu(menubar, tearoff=0)
     menubar.add_cascade(label='File', menu=file)
 
     # Add the 'Edit' menubar
     global edit
-    edit = tkinter.Menu(menubar, tearoff=0)
+    edit = ttk.Menu(menubar, tearoff=0)
     menubar.add_cascade(label='Edit', menu=edit)
 
     # Add the 'Help' menubar
-    help_menu = tkinter.Menu(editor, tearoff=0)
+    help_menu = ttk.Menu(editor, tearoff=0)
     menubar.add_cascade(label='Help', menu=help_menu)
 
     # Add the 'Preview' button
@@ -169,8 +170,9 @@ def new_file():
 
     # Add the text area
     global text
-    text = scrolledtext.ScrolledText(editor, undo=True, font=('Sans Mono', 15))
+    text = ttk.ScrolledText(editor, undo=True, font=('Sans Mono', 15))
     text.pack(fill='both', expand=True)
+
     # Set focus
     text.focus_set()
 
@@ -184,6 +186,8 @@ def new_file():
     edit.add_command(label='Paste', command=paste)
     edit.add_command(label='Copy', command=copy)
     edit.add_command(label='Cut', command=cut)
+    edit.add_separator()
+    edit.add_command(label='Hide this menu')
 
     # Pack the menubar
     editor.config(menu=menubar)

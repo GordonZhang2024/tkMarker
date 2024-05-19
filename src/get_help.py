@@ -5,9 +5,9 @@ Module get_help:
 Get the help
 """
 
-import tkinter
-from tkinter import ttk
 import webbrowser
+import ttkbootstrap as ttk
+from ttkbootstrap.constants import *
 
 """
 tkMarker
@@ -43,50 +43,46 @@ def show_project_info():
     Function show_project_info()
     Show the project infomation
     """
-    info_page = tkinter.Tk()
-    info_page.title('About')
-    info_page.config(cursor='star')
+    info_page = ttk.Window(title='About', themename='lumen')
     label = ttk.Label(
         info_page,
         text='tkMarker\n',
-        font=('Consolas', 20)
     )
     label.pack()
 
-    description = tkinter.Label(
+    description = ttk.Label(
         info_page,
         text='A Markdown editor using tkinter',
-        font=('Consolas', 10)
     )
     description.pack()
 
     github_repos = ttk.Button(
         info_page,
         text='GitHub',
-        command=open_github_repos
+        command=open_github_repos,
+        bootstyle=PRIMARY
     )
+    github_repos.pack()
 
-    website = tkinter.Button(
+    website = ttk.Button(
         info_page,
         text='Website',
-        bg='cyan',
-        command=open_website
+        command=open_website,
+        bootstyle=(INFO, OUTLINE)
     )
+    website.pack()
     
     issue_tracker = ttk.Button(
         info_page,
         text='Report an issue',
-        command=open_issue_url
+        command=open_issue_url,
+        bootstyle=SECONDARY
     )
-    
-    github_repos.pack()
-    website.pack()
     issue_tracker.pack()
 
-    feel_free_label = tkinter.Label(
+    feel_free_label = ttk.Label(
         info_page,
         text='Feel free to report an issue or start a pull request.',
-        font=('Consolas', 10)
     )
     feel_free_label.pack()
 
