@@ -22,7 +22,8 @@ A Markdown editor using **Tkinter**
 - [ ] Code highlight
 - [ ] Auto complete
 
-![Pasted image](https://gordonzhang.pythonanywhere.com/static/screenshot.png)
+ ![screenshot](https://github.com/GordonZhang2024/tkMarker/assets/159539185/0b343372-8f77-446c-a11c-4b3ced5d31ed)
+
 
 ## Installation
 ### Installing the dependencies
