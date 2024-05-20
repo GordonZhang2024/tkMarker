@@ -46,7 +46,8 @@ $ ./install.sh
 > Please use Python >= 3.8
 
 You can also create a desktop icon by yourself.
-
+###### Windows
+You need to use something like Cygwin.
 
 ## Usage
 Type command:
