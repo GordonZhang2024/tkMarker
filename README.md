@@ -62,7 +62,11 @@ You will see the editor.
 MIT License
 
 ---
+
+### Give it a try! I know you'll like it.
+
+---
 *This is a software with **ABSOLUTELY NO WARRANTY**.*
 
-*Feel free to report an issue or start a pull request.*
-
+*Feel free to report an issue.*
+**You are welcomed to start a pull request.**
