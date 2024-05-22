@@ -1,6 +1,6 @@
 # tkMarker
 
-A Markdown editor using **Tkinter**
+A light weight Markdown editor using **Tkinter**
 
 ![logo](https://gordonzhang.pythonanywhere.com/static/tkMarker.png)
 
@@ -19,6 +19,7 @@ A Markdown editor using **Tkinter**
 - [x] Basic markdown syntax support
 - [x] GitHub flavored Markdown support (beta)
 - [x] Auto refresh
+- [x] It's really fast!
 - [ ] Code highlight
 - [ ] Auto complete
 
