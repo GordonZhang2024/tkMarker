@@ -19,7 +19,7 @@ A light weight Markdown editor using **Tkinter**
 - [x] Basic markdown syntax support
 - [x] GitHub flavored Markdown support (beta)
 - [x] Auto refresh
-- [x] It's really fast!
+- [x] **It's really fast!**
 - [ ] Code highlight
 - [ ] Auto complete
 
