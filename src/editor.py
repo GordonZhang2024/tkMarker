@@ -39,14 +39,12 @@ SOFTWARE.
 """
 
 # Availible filetypes for the file selection window
-filetypes = [
-    ('Markdown', '*.md'),
-    ("All Files", "*.*")
-]
+filetypes = [('Markdown', '*.md'), ("All Files", "*.*")]
 
 
 def show_project_info():
     get_help.show_project_info()
+
 
 def load_preview():
     # Load the preview
@@ -56,8 +54,9 @@ def load_preview():
     preview_file = f'{home}/.tkmarker/{file_uuid}'
 
     # Convert the Markdown document to HTML and write to the preview file
-    html = convert(markdown_text_for_preview, preview=True,
-                   file_path=os.path.split(filename))
+    html = convert(
+        markdown_text_for_preview, preview=True, file_path=os.path.split(filename)
+    )
     with open(preview_file, 'w+', encoding='utf-8') as p:
         p.write(html)
 
@@ -69,8 +68,9 @@ def refresh_preview(arg):
     # Refresh the preview
     markdown_text_for_preview = text.get('1.0', 'end')
     preview_file = f'{home}/.tkmarker/{file_uuid}'
-    html = convert(markdown_text_for_preview, preview=True,
-                   file_path=os.path.split(filename))
+    html = convert(
+        markdown_text_for_preview, preview=True, file_path=os.path.split(filename)
+    )
 
     with open(preview_file, 'w', encoding='utf-8') as p:
         p.write(html)
@@ -108,10 +108,7 @@ def cut():
 def open_file():
     # Open a file
     global filename
-    filename = filedialog.askopenfilename(
-        initialdir='~/Documents',
-        filetypes=filetypes
-    )
+    filename = filedialog.askopenfilename(initialdir='~/Documents', filetypes=filetypes)
 
     with open(filename, encoding='utf-8') as f:
         t = f.read()
@@ -127,8 +124,7 @@ def save():
     global filename
     if filename == 'New File':
         filename = filedialog.asksaveasfilename(
-            initialdir='~/Documents',
-            filetypes=filetypes
+            initialdir='~/Documents', filetypes=filetypes
         )
 
         # Set the filename as the title of the window
@@ -149,7 +145,7 @@ def new_file():
     editor.wm_title('tkMarker')
 
     # Set full screen
-    #editor.geometry('1000x1000')
+    # editor.geometry('1000x1000')
     menubar = ttk.Menu(editor)
 
     # Add the 'File' menubar

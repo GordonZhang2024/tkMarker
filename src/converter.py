@@ -67,7 +67,8 @@ def convert_str(markdown: list, preview=False, file_path='./') -> str:
         </script>
         '''
 
-    html = '''\
+    html = (
+        '''\
     <html>
         <title>
             Preview
@@ -78,16 +79,17 @@ def convert_str(markdown: list, preview=False, file_path='./') -> str:
                 font-family: 'Sans Mono';
             }
         </style>
-    '''\
-        + script\
+    '''
+        + script
         + '''\
             <body onload = "JavaScript:AutoRefresh(5000);">
-        '''\
-        + html\
+        '''
+        + html
         + '''\
             </body>
             </html>
         '''
+    )
 
     # Convert quoted code
     html = convert_code(html)
@@ -102,21 +104,21 @@ def convert_gfm(line: str) -> str:
         '[!TIP]': 'TIP',
         '[!IMPORTANT]': 'IMPORTANT',
         '[!WARNING]': 'WARNING',
-        '[!CAUTION]': 'CAUTION'
+        '[!CAUTION]': 'CAUTION',
     }
 
     for origin, html in gfm_alerts.items():
         line = line.replace(origin, html)
 
-    line = line.replace('[ ]', '<input type="checkbox">')\
-               .replace('[x]', '<input type="checkbox" checked>')
+    line = line.replace('[ ]', '<input type="checkbox">').replace(
+        '[x]', '<input type="checkbox" checked>'
+    )
 
     return line
 
 
 def replace_script_tag(line: str) -> str:
-    line = line.replace('<script>', '')\
-               .replace('</script>', '')
+    line = line.replace('<script>', '').replace('</script>', '')
 
     return line
 
@@ -215,12 +217,9 @@ def convert_single_line(line: str) -> str:
             else:
                 description = ''
 
-            src = img.replace(description, '')\
-                     .replace('(', '')\
-                     .replace(')', '')
-            
-            description = description.replace('![', '')\
-                                     .replace(']', '')
+            src = img.replace(description, '').replace('(', '').replace(')', '')
+
+            description = description.replace('![', '').replace(']', '')
             image = f'<img src={src} alt={description}/>'
             line = line.replace(img, image)
             need_br_tag = False

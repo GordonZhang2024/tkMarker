@@ -57,26 +57,17 @@ def show_project_info():
     description.pack()
 
     github_repos = ttk.Button(
-        info_page,
-        text='GitHub',
-        command=open_github_repos,
-        bootstyle=PRIMARY
+        info_page, text='GitHub', command=open_github_repos, bootstyle=PRIMARY
     )
     github_repos.pack()
 
     website = ttk.Button(
-        info_page,
-        text='Website',
-        command=open_website,
-        bootstyle=(INFO, OUTLINE)
+        info_page, text='Website', command=open_website, bootstyle=(INFO, OUTLINE)
     )
     website.pack()
-    
+
     issue_tracker = ttk.Button(
-        info_page,
-        text='Report an issue',
-        command=open_issue_url,
-        bootstyle=SECONDARY
+        info_page, text='Report an issue', command=open_issue_url, bootstyle=SECONDARY
     )
     issue_tracker.pack()
 
@@ -104,4 +95,3 @@ def open_issue_url():
 
 def open_website():
     webbrowser.open(WEBSITE_URL)
-
