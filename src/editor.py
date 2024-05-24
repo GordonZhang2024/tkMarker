@@ -198,6 +198,7 @@ def new_file():
     editor.bind('Control-S', save)
     editor.bind('Control-P', load_preview)
     editor.bind('<F1>', show_project_info)
+    editor.bind('<F5>', load_preview)
 
     # Refresh Automatically
     editor.bind('<KeyRelease>', refresh_preview)
