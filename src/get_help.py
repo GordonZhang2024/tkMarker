@@ -55,17 +55,17 @@ def show_project_info():
         info_page,
         text='A Markdown editor using tkinter',
     )
-    description.pack()
+    description.pack(pady=5)
 
     github_repos = ttk.Button(
         info_page, text='GitHub', command=open_github_repos, bootstyle=PRIMARY
     )
-    github_repos.pack()
+    github_repos.pack(pady=5)
 
     website = ttk.Button(
         info_page, text='Website', command=open_website, bootstyle=(INFO, OUTLINE)
     )
-    website.pack()
+    website.pack(pady=5)
 
     issue_tracker = ttk.Button(
         info_page, text='Report an issue', command=open_issue_url, bootstyle=SECONDARY

@@ -45,10 +45,20 @@ $ ./install.sh
 ```
 > [!IMPORTANT]
 > Please use Python >= 3.8
-
-You can also create a desktop icon by yourself.
 ###### Windows
 You need to use something like Cygwin.
+
+###  Creating desktop icon
+Write this to `~/.local/share/applications/tkmarker.desktop`
+```
+[Desktop Entry]
+Name=tkMarker
+Exec=/home/<your-user-name>/.local/bin/tkmarker
+Type=Application
+Icon=<path/to/tkMarker>/static/tkMarker.png
+Categories=Development;
+Keywords=Markdown;
+```
 
 ## Usage
 Type command:
