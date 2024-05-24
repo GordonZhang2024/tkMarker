@@ -43,10 +43,11 @@ def show_project_info():
     Function show_project_info()
     Show the project infomation
     """
-    info_page = ttk.Window(title='About', themename='lumen')
+    info_page = ttk.Toplevel(title='About')
     label = ttk.Label(
         info_page,
         text='tkMarker\n',
+        font=('Sans Mono', 20),
     )
     label.pack()
 
