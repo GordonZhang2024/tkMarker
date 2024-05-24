@@ -1,8 +1,8 @@
-# tkMarker
+# ![logo](https://gordonzhang.pythonanywhere.com/static/tkMarker.png) tkMarker
 
 A light weight Markdown editor using **Tkinter**
 
-![logo](https://gordonzhang.pythonanywhere.com/static/tkMarker.png)
+
 
 
 [![Static Badge](https://img.shields.io/badge/Download%20-%20tkMarker?style=for-the-badge&logo=github&labelColor=black&color=blue&link=https%3A%2F%2Fgithub.com%2FGordonZhang2024%2FtkMarker%2Freleases)](https://github.com/GordonZhang2024/tkMarker/releases)
