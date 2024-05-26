@@ -2,7 +2,9 @@
 
 """
 Module converter
-Convert Markdown to HTML
+===============
+
+Convert Markdown to HTML.
 """
 
 import re
@@ -33,9 +35,10 @@ SOFTWARE.
 
 
 def convert(markdown: str, preview=False, file_path='./') -> str:
-    """
+    """\
     Function convert()
-    Convert Markdown to HTML
+    ==================
+    Convert Markdown to HTML.
     """
     global path
     path = file_path
@@ -47,7 +50,8 @@ def convert(markdown: str, preview=False, file_path='./') -> str:
 def convert_str(markdown: list, preview=False, file_path='./') -> str:
     """
     Function convert_str()
-    Convert Markdown to HTML
+    ======================
+    Convert Markdown(split by lines) to HTML.
     """
 
     html = ''
@@ -146,7 +150,8 @@ def convert_code(text: str) -> str:
 def convert_single_line(line: str) -> str:
     """
     Function convert_single_line()
-    Convert single-line Markdown to HTML
+    ==============================
+    Convert single-line Markdown to HTML.
     """
 
     global need_br_tag
@@ -154,8 +159,9 @@ def convert_single_line(line: str) -> str:
     have_style = True  # if there is a style.
 
     while have_style:  # loop(because there will possibly be nested styles)
-        # find a style and convert it to html
         have_style = False
+
+        # find a style and convert it to html
         head = re.match(r'#+\s', line)
         if head:
             head = str(head.group(0))

@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
 """
-module main
+Module editor
+=============
+
 The main program of tkMarker
 """
 import ttkbootstrap as ttk
@@ -208,6 +210,7 @@ def new_file():
 
 if __name__ == '__main__':
     # Init
+    # This is the starting point of everything. :)
     home = os.path.expanduser('~')
     global file_uuid
     file_uuid = uuid.uuid1()
