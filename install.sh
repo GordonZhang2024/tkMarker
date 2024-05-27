@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+## This is the tkMarker installer
+
 # tkMarker
 #     A Markdown editor using tkinter
 # Copyright (C) 2024 Gordon Zhang
