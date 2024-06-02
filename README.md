@@ -1,7 +1,6 @@
 # ![logo](https://gordonzhang.pythonanywhere.com/static/tkMarker.png) tkMarker
 
-A light weight Markdown editor using **Tkinter**
-
+A light weight Markdown editor
 
 
 
