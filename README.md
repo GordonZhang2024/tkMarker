@@ -30,7 +30,7 @@ A light weight Markdown editor using **Tkinter**
 ### Installing the dependencies
 ###### GNU/Linux
 This project requires **Tkinter**.
-To install them, type command:
+To install it, type command:
 ```bash
 $ sudo apt-get install python-tk # On Debian based GNU/Linux distributions
 $ sudo dnf install python3-tkinter # On Fedora based GNU/Linux distributions
@@ -45,8 +45,6 @@ $ ./install.sh
 ```
 > [!IMPORTANT]
 > Please use Python >= 3.8
-###### Windows
-You need to use something like Cygwin.
 
 ###  Creating desktop icon
 Write this to `~/.local/share/applications/tkmarker.desktop`
