@@ -7,7 +7,6 @@ Module converter
 Convert Markdown to HTML.
 """
 
-import re
 import markdown2
 
 """
@@ -34,6 +33,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+
 def convert(text: str, file_path: str, preview=False):
     return markdown2.markdown(text)
-

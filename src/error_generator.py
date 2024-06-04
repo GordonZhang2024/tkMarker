@@ -7,6 +7,7 @@ Module error_generator
 Generate a Markdown syntax error or warning.
 """
 
+
 class ErrorGenerator:
     """
     Class ErrorGenerator
@@ -14,6 +15,7 @@ class ErrorGenerator:
 
     The error generator for tkMarker.
     """
+
     def generate(self, level: int, text: str):
         """
         Function generate()
@@ -27,6 +29,6 @@ class ErrorGenerator:
             case 1:
                 self.print('ERROR')
         self.print(text, '\n')
+
     def print(self, *values):
         print(values, flush=True, end='')
-
