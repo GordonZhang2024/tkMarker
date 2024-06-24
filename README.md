@@ -1,8 +1,6 @@
 # ![logo](https://gordonzhang.pythonanywhere.com/static/tkMarker.png) tkMarker
 
-A light weight Markdown editor
-
-
+A light weight text editor
 
 [![Static Badge](https://img.shields.io/badge/Download%20-%20tkMarker?style=for-the-badge&logo=github&labelColor=black&color=blue&link=https%3A%2F%2Fgithub.com%2FGordonZhang2024%2FtkMarker%2Freleases)](https://github.com/GordonZhang2024/tkMarker/releases)
 
@@ -11,16 +9,7 @@ A light weight Markdown editor
 ![GitHub Repo stars](https://img.shields.io/github/stars/GordonZhang2024/tkMarker)
 ![GitHub watchers](https://img.shields.io/github/watchers/GordonZhang2024/tkMarker)
 
-[website](https://gordonzhang.pythonanywhere.com/projects/tkMarker/)
 
-## 🚀 Features
-- [x] Markdown preview
-- [x] Basic markdown syntax support
-- [x] GitHub flavored Markdown support (beta)
-- [x] Auto refresh
-- [x] **It's really fast!**
-- [ ] Code highlight
-- [ ] Auto complete
 
  ![screenshot](https://github.com/GordonZhang2024/tkMarker/assets/159539185/0b343372-8f77-446c-a11c-4b3ced5d31ed)
 
@@ -64,7 +53,6 @@ $ tkmarker &
 ```
 You will see the editor.
 
-*Click the <keyboard>Preview</keyboard> Button, then the editor will open the preview in the web browser.*
 
 ## License
 MIT License

@@ -11,7 +11,7 @@ from ttkbootstrap.constants import *
 
 """
 tkMarker
-    A Markdown editor using tkinter
+    A light-weight text editor
 Copyright (C) 2024 Gordon Zhang
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -53,7 +53,7 @@ def show_project_info():
 
     description = ttk.Label(
         info_page,
-        text='A Markdown editor using tkinter',
+        text='A light-weight text editor',
     )
     description.pack(pady=5)
 

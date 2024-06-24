@@ -8,17 +8,15 @@ The main program of tkMarker
 """
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
-import webbrowser
 import os
 from tkinter import filedialog
 import uuid
 
-from converter import convert
 import get_help
 
 """
 tkMarker
-    A Markdown editor using tkinter
+    A light-weight text editor
 Copyright (C) 2024 Gordon Zhang
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,50 +39,11 @@ SOFTWARE.
 """
 
 # Availible filetypes for the file selection window
-filetypes = [('Markdown', '*.md'), ("All Files", "*.*")]
+filetypes = [('Text', '*.txt'), ("All Files", "*.*")]
 
 
 def show_project_info():
     get_help.show_project_info()
-
-
-def load_preview():
-    # Load the preview
-    markdown_text_for_preview = text.get('1.0', 'end')  # Get the text
-
-    # Use uuid as the name of the preview file
-    preview_file = f'{home}/.tkmarker/{file_uuid}'
-
-    # Convert the Markdown document to HTML and write to the preview file
-    html = convert(
-        markdown_text_for_preview, preview=True, file_path=os.path.split(filename)
-    )
-    with open(preview_file, 'w+', encoding='utf-8') as p:
-        p.write(html)
-
-    # Open the preview file in the webbrowser
-    webbrowser.open_new(preview_file)
-
-
-def refresh_preview(arg):
-    # Refresh the preview
-    markdown_text_for_preview = text.get('1.0', 'end')
-    preview_file = f'{home}/.tkmarker/{file_uuid}'
-    html = convert(
-        markdown_text_for_preview, preview=True, file_path=os.path.split(filename)
-    )
-
-    with open(preview_file, 'w', encoding='utf-8') as p:
-        p.write(html)
-
-
-def convert_to_html():
-    # Convert Markdown document to HTML
-    markdown_text = text.get('1.0', 'end')
-    output_file = filedialog.asksaveasfilename(filetypes=[('HTML', '*.html')])
-    html = convert(markdown_text)
-    with open(output_file, 'w', encoding='utf-8') as o_file:
-        o_file.write(html)
 
 
 def show_popup_menu(event):
@@ -163,9 +122,6 @@ def new_file():
     help_menu = ttk.Menu(editor, tearoff=0)
     menubar.add_cascade(label='Help', menu=help_menu)
 
-    # Add the 'Preview' button
-    menubar.add_command(label='Preview', command=load_preview)
-
     # Add the text area
     global text
     text = ttk.ScrolledText(editor, undo=True, font=('Sans Mono', 15))
@@ -178,7 +134,6 @@ def new_file():
     file.add_command(label='Open...', command=open_file)
     file.add_command(label='Save', command=save)
     file.add_separator()
-    file.add_command(label='Convert to HTML', command=convert_to_html)
 
     # Add the "edit" menu
     edit.add_command(label='Paste', command=paste)
@@ -198,12 +153,8 @@ def new_file():
     editor.bind('<Control-C>', copy)
     editor.bind('<Control-V>', paste)
     editor.bind('<Control-S>', save)
-    editor.bind('<Control-P>', load_preview)
     editor.bind('<F1>', show_project_info)
-    editor.bind('<F5>', load_preview)
 
-    # Refresh Automatically
-    editor.bind('<KeyRelease>', refresh_preview)
 
     editor.mainloop()
 
@@ -212,8 +163,6 @@ if __name__ == '__main__':
     # Init
     # This is the starting point of everything. :)
     home = os.path.expanduser('~')
-    global file_uuid
-    file_uuid = uuid.uuid1()
 
     # Start the editor
     new_file()
